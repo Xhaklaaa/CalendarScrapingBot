@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"time"
 
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
 )
@@ -30,6 +31,20 @@ func isStartMessage(update *tgbotapi.Update) bool {
 	return update.Message != nil && update.Message.Text == "/start"
 }
 
+func delay(seconds uint8) {
+	time.Sleep(time.Second * time.Duration(seconds))
+}
+
+func printSystemMessageWithDelay(delayInSec uint8, message string) {
+	gBot.Send(tgbotapi.NewMessage(gChatId, message))
+	delay(delayInSec)
+
+}
+
+func printIntro(update *tgbotapi.Update) {
+	printSystemMessageWithDelay(2, "Привет!"+EMOJI_HUGGING)
+}
+
 func main() {
 
 	log.Printf("Authorized on account %s", gBot.Self.UserName)
@@ -40,11 +55,8 @@ func main() {
 	for update := range gBot.GetUpdatesChan(updateConfig) {
 		if isStartMessage(&update) {
 			log.Printf("[%s] %s", update.Message.From.UserName, update.Message.Text)
-
-			msg := tgbotapi.NewMessage(update.Message.Chat.ID, update.Message.Text)
-			msg.ReplyToMessageID = update.Message.MessageID
-
-			gBot.Send(msg)
+			gChatId = update.Message.Chat.ID
+			printIntro(&update)
 		}
 		//TODO: implement proccessing other types of updates
 	}
