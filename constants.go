@@ -1,4 +1,4 @@
-package main
+package constant
 
 const (
 	TOKEN_NAME_IN_OS      = "BotaZamenabot"
