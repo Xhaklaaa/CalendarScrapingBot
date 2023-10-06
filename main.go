@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"os"
 	"time"
@@ -31,13 +30,10 @@ func CallbackQuerybot(update *tgbotapi.Update) bool {
 
 func init() {
 	_ = os.Setenv(TOKEN_NAME, "6635332877:AAE_EA1Rvlfw6sLLJxfhIyRrDTtmyd20PG8")
+	Token = os.Getenv(TOKEN_NAME)
 
-	if Token = os.Getenv(TOKEN_NAME); Token == "" {
-		panic(fmt.Errorf(`failed to load enviroment variable "%s"`, TOKEN_NAME))
-	}
 	var err error
-	BotaZamena, err := tgbotapi.NewBotAPI("gToken")
-	if err != nil {
+	if BotaZamena, err = tgbotapi.NewBotAPI(Token); err != nil {
 		log.Panic(err)
 	}
 	BotaZamena.Debug = true
@@ -79,6 +75,7 @@ func main() {
 			msg := tgbotapi.NewMessage(update.Message.Chat.ID, "Привет, я полезный телеграм бот! Чем могу помочь?")
 
 			BotaZamena.Send(msg)
+			showMenu()
 		}
 	}
 }
