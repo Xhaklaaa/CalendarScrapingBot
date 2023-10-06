@@ -1,2 +1,2 @@
 # BotaZamena
-Portfolio for future job
+The coolest telegram bot in the world
