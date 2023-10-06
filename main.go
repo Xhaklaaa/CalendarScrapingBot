@@ -12,14 +12,6 @@ var BotaZamena *tgbotapi.BotAPI
 var Token string
 var ChatId int64
 
-func delay(seconds uint8) {
-	time.Sleep(time.Second * time.Duration(seconds))
-}
-func sendSystemMessageWithDelay(delayInSec uint8, message string) {
-	BotaZamena.Send(tgbotapi.NewMessage(ChatId, message))
-	delay(delayInSec)
-
-}
 func startMessage(update *tgbotapi.Update) bool {
 	return update.Message != nil && update.Message.Text == "/start"
 }
@@ -45,10 +37,10 @@ func updateProcess(update *tgbotapi.Update) {
 	switch choice {
 	case KEY_TEXT_HELLO:
 		hello()
-		showMenu()
+		showMenu(update)
 	case KEY_TEXT_BYE:
 		bye()
-		showMenu()
+		showMenu(update)
 
 	}
 }
@@ -73,9 +65,11 @@ func main() {
 			log.Printf("[%s] %s", update.Message.From.UserName, update.Message.Text)
 
 			msg := tgbotapi.NewMessage(update.Message.Chat.ID, "Привет, я полезный телеграм бот! Чем могу помочь?")
-
+			msg.ReplyMarkup = tgbotapi.NewInlineKeyboardMarkup(
+				keyboradGet(KEY_TEXT_HELLO, KEY_CODE_HELLO),
+				keyboradGet(KEY_TEXT_BYE, KEY_CODE_HELLO),
+			)
 			BotaZamena.Send(msg)
-			showMenu()
 		}
 	}
 }

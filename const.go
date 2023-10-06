@@ -7,6 +7,6 @@ const (
 	KEY_TEXT_HELLO = "Привет"
 	KEY_TEXT_BYE   = "Пока"
 
-	KEY_CODE_HELLO = "Hello"
-	KEY_CODE_BYE   = "Bye"
+	KEY_CODE_HELLO = "hello"
+	KEY_CODE_BYE   = "bye"
 )

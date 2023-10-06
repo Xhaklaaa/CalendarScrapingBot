@@ -8,18 +8,20 @@ func keyboradGet(keytext, keycode string) []tgbotapi.InlineKeyboardButton {
 	return tgbotapi.NewInlineKeyboardRow(tgbotapi.NewInlineKeyboardButtonData(keytext, keycode))
 }
 
-func showMenu() {
-	message := tgbotapi.NewMessage(ChatId, "Меню")
-	message.ReplyMarkup = tgbotapi.NewInlineKeyboardMarkup(
+func showMenu(update *tgbotapi.Update) {
+	msg := tgbotapi.NewMessage(ChatId, "Меню")
+	msg.ReplyMarkup = tgbotapi.NewInlineKeyboardMarkup(
 		keyboradGet(KEY_TEXT_HELLO, KEY_CODE_HELLO),
 		keyboradGet(KEY_TEXT_BYE, KEY_CODE_HELLO),
 	)
-	BotaZamena.Send(message)
+	BotaZamena.Send(msg)
 }
 
 func hello() {
-	sendSystemMessageWithDelay(2, "Пизда")
+	msg := tgbotapi.NewMessage(ChatId, "Привет")
+	BotaZamena.Send(msg)
 }
 func bye() {
-	sendSystemMessageWithDelay(2, "Не пизда")
+	msg := tgbotapi.NewMessage(ChatId, "Пока")
+	BotaZamena.Send(msg)
 }
