@@ -36,11 +36,11 @@ func init() {
 		panic(fmt.Errorf(`failed to load enviroment variable "%s"`, TOKEN_NAME))
 	}
 	var err error
-	gBot, err := tgbotapi.NewBotAPI("gToken")
+	BotaZamena, err := tgbotapi.NewBotAPI("gToken")
 	if err != nil {
 		log.Panic(err)
 	}
-	gBot.Debug = true
+	BotaZamena.Debug = true
 }
 func updateProcess(update *tgbotapi.Update) {
 	choice := update.CallbackQuery.Data
