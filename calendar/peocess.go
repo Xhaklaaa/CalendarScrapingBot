@@ -1,10 +1,10 @@
-package telegram_calendar
+package calendar
 
 import (
 	"strconv"
 	"time"
 
-	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
+	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
 )
 
 func (tc *TelegramCalendar) ProcessCalendarSelection(update *tgbotapi.Update) (time.Time, error) {

@@ -1,10 +1,10 @@
-package telegram_calendar
+package calendar
 
 import (
 	"strconv"
 	"time"
 
-	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
+	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
 )
 
 // You can add some bot_example message text before calendar.

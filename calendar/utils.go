@@ -1,4 +1,4 @@
-package telegram_calendar
+package calendar
 
 import (
 	"strconv"

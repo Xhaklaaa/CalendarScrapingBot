@@ -1,7 +1,7 @@
-package telegram_calendar
+package calendar
 
 import (
-	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
+	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
 )
 
 func (tc *TelegramCalendar) CloseCalendar(message tgbotapi.Message) error {

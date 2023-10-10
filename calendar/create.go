@@ -1,11 +1,11 @@
-package telegram_calendar
+package calendar
 
 import (
 	"strconv"
 	"time"
 
 	"github.com/dykov/gocalendar"
-	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
+	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
 )
 
 type TelegramCalendar struct {
