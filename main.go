@@ -35,10 +35,10 @@ func updateProcess(update *tgbotapi.Update) {
 	log.Printf("[%T] %s", time.Now(), choice)
 
 	switch choice {
-	case KEY_TEXT_HELLO:
+	case KEY_CODE_HELLO:
 		hello()
 		showMenu(update)
-	case KEY_TEXT_BYE:
+	case KEY_CODE_BYE:
 		bye()
 		showMenu(update)
 
@@ -59,10 +59,9 @@ func main() {
 	for update := range updates {
 		if CallbackQuerybot(&update) {
 			updateProcess(&update)
-		}
-
-		if startMessage(&update) {
+		} else if startMessage(&update) {
 			log.Printf("[%s] %s", update.Message.From.UserName, update.Message.Text)
+			ChatId = update.Message.Chat.ID
 
 			msg := tgbotapi.NewMessage(update.Message.Chat.ID, "Привет, я полезный телеграм бот! Чем могу помочь?")
 			msg.ReplyMarkup = tgbotapi.NewInlineKeyboardMarkup(
