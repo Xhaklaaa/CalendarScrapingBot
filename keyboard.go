@@ -9,10 +9,10 @@ func keyboradGet(keytext, keycode string) []tgbotapi.InlineKeyboardButton {
 }
 
 func showMenu(update *tgbotapi.Update) {
-	msg := tgbotapi.NewMessage(ChatId, "Меню")
+	msg := tgbotapi.NewMessage(ChatId, "")
 	msg.ReplyMarkup = tgbotapi.NewInlineKeyboardMarkup(
 		keyboradGet(KEY_TEXT_HELLO, KEY_CODE_HELLO),
-		keyboradGet(KEY_TEXT_BYE, KEY_CODE_HELLO),
+		keyboradGet(KEY_TEXT_DATA, KEY_CODE_DATA),
 	)
 	BotaZamena.Send(msg)
 }
