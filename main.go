@@ -36,10 +36,10 @@ func updateProcess(update *tgbotapi.Update) {
 
 	switch choice {
 	case KEY_CODE_HELLO:
-
+		hello()
 		showMenu(update)
-	case KEY_CODE_DATA:
-
+	case KEY_CODE_WRITE:
+		data()
 		showMenu(update)
 
 	}
@@ -66,7 +66,7 @@ func main() {
 			msg := tgbotapi.NewMessage(update.Message.Chat.ID, "Привет, я полезный телеграм бот! Чем могу помочь?")
 			msg.ReplyMarkup = tgbotapi.NewInlineKeyboardMarkup(
 				keyboradGet(KEY_TEXT_HELLO, KEY_CODE_HELLO),
-				keyboradGet(KEY_TEXT_DATA, KEY_CODE_DATA),
+				keyboradGet(KEY_TEXT_DATA, KEY_CODE_WRITE),
 			)
 			BotaZamena.Send(msg)
 		}
