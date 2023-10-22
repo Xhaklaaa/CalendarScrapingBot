@@ -1,2 +1,3 @@
-# BotaZamena
-The coolest telegram bot in the world
+# CalendarScrapingBot
+Scraping posts from [habr.com](https://habr.com/ru/hubs/go/articles/)
+Displaying specific posts by calendar
