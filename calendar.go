@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"time"
 
@@ -32,7 +31,8 @@ func calendar(update *tgbotapi.Update) {
 		if err != nil {
 			return err
 		}
-		fmt.Println(date)
+		msg := tgbotapi.NewMessage(update.Message.Chat.ID, date.String())
+		BotaZamena.Send(msg)
 
 		c.Respond()
 		return nil
