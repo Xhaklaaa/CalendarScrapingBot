@@ -34,15 +34,6 @@ func updateProcess(update *tgbotapi.Update) {
 	choice := update.CallbackQuery.Data
 	log.Printf("[%T] %s", time.Now(), choice)
 
-	switch choice {
-	case KEY_CODE_HELLO:
-		hello()
-		showMenu(update)
-	case KEY_CODE_WRITE:
-
-		showMenu(update)
-
-	}
 }
 
 func main() {
@@ -63,9 +54,8 @@ func main() {
 			log.Printf("[%s] %s", update.Message.From.UserName, update.Message.Text)
 			ChatId = update.Message.Chat.ID
 
-			msg := tgbotapi.NewMessage(update.Message.Chat.ID, "Привет, я полезный телеграм бот! Чем могу помочь?")
+			msg := tgbotapi.NewMessage(update.Message.Chat.ID, "Привет, я полезный телеграм бот! Что бы выбрать дату введите '/calendar'")
 			BotaZamena.Send(msg)
-			showMenu(&update)
 			calendar(&update)
 		}
 	}
