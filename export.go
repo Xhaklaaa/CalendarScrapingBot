@@ -9,7 +9,7 @@ import (
 	"github.com/geziyor/geziyor/export"
 )
 
-func main() {
+func exporter() {
 	page := 1
 	for page = 1; page < 50; page++ {
 		geziyor.NewGeziyor(&geziyor.Options{

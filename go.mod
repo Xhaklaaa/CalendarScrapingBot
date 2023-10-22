@@ -2,12 +2,16 @@ module BotaZamena
 
 go 1.21.1
 
-require github.com/go-telegram-bot-api/telegram-bot-api/v5 v5.5.1
+require (
+	github.com/go-telegram-bot-api/telegram-bot-api/v5 v5.5.1
+	github.com/oramaz/telebot-calendar v0.0.0-20230417132244-7525a3db3134
+	gopkg.in/telebot.v3 v3.1.3
+)
+
+require github.com/go-ozzo/ozzo-validation v3.6.0+incompatible // indirect
 
 require (
-	github.com/dykov/gocalendar v0.0.0-20190617110047-4449bfb96b49
-	github.com/go-telegram-bot-api/telegram-bot-api/v5 v5.5.1
-	github.com/PuerkitoBio/goquery v1.8.1 // indirect
+	github.com/PuerkitoBio/goquery v1.8.1
 	github.com/VividCortex/gohistogram v1.0.0 // indirect
 	github.com/andybalholm/cascadia v1.3.2 // indirect
 	github.com/beorn7/perks v1.0.1 // indirect
@@ -15,7 +19,7 @@ require (
 	github.com/chromedp/cdproto v0.0.0-20231007061347-18b01cd81617 // indirect
 	github.com/chromedp/chromedp v0.9.2 // indirect
 	github.com/chromedp/sysutil v1.0.0 // indirect
-	github.com/geziyor/geziyor v0.0.0-20230315135110-a242b58aaa65 // indirect
+	github.com/geziyor/geziyor v0.0.0-20230315135110-a242b58aaa65
 	github.com/go-kit/kit v0.13.0 // indirect
 	github.com/gobwas/httphead v0.1.0 // indirect
 	github.com/gobwas/pool v0.2.1 // indirect
@@ -24,7 +28,6 @@ require (
 	github.com/josharian/intern v1.0.0 // indirect
 	github.com/mailru/easyjson v0.7.7 // indirect
 	github.com/matttproud/golang_protobuf_extensions v1.0.4 // indirect
-	github.com/mssola/user_agent v0.6.0 // indirect
 	github.com/prometheus/client_golang v1.17.0 // indirect
 	github.com/prometheus/client_model v0.5.0 // indirect
 	github.com/prometheus/common v0.44.0 // indirect
@@ -36,5 +39,3 @@ require (
 	golang.org/x/time v0.3.0 // indirect
 	google.golang.org/protobuf v1.31.0 // indirect
 )
-
-require github.com/technoweenie/multipartstreamer v1.0.1 // indirect

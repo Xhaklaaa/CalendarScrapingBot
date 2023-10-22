@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"os"
 	"time"
@@ -40,16 +39,13 @@ func updateProcess(update *tgbotapi.Update) {
 		hello()
 		showMenu(update)
 	case KEY_CODE_WRITE:
-		tc = NewTelegramCalendar(myBot, time.Monday)
-		fmt.Println(tc.OpenCalendar(&update, ""))
+
 		showMenu(update)
 
 	}
 }
 
 func main() {
-
-	tc := TelegramCalendar{}
 
 	BotaZamena.Debug = true
 
@@ -70,6 +66,7 @@ func main() {
 			msg := tgbotapi.NewMessage(update.Message.Chat.ID, "Привет, я полезный телеграм бот! Чем могу помочь?")
 			BotaZamena.Send(msg)
 			showMenu(&update)
+			calendar(&update)
 		}
 	}
 }
