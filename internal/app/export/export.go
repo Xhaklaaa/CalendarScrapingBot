@@ -1,4 +1,4 @@
-package main
+package export
 
 import (
 	"strconv"
@@ -24,10 +24,12 @@ func exporter() {
 func postingParse(g *geziyor.Geziyor, r *client.Response) {
 	r.HTMLDoc.Find("article.tm-articles-list__item").Each(func(i int, s *goquery.Selection) {
 		src, _ := s.Find("img").Last().Attr("src")
+		timedate, _ := s.Find("time").Attr("title")
 		g.Exports <- map[string]interface{}{
-			"header": s.Find("h2.tm-title_h2").Text(),
-			"title":  s.Find("p").First().Text(),
-			"src":    src,
+			"Name":  s.Find("h2.tm-title_h2").Text(),
+			"Body":  s.Find("p").First().Text(),
+			"Image": src,
+			"Time":  timedate,
 		}
 	})
 

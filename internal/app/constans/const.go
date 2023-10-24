@@ -1,4 +1,4 @@
-package main
+package constans
 
 const (
 	TOKEN_NAME            = "BotaZamena"
