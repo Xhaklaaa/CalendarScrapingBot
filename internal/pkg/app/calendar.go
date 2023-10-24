@@ -1,6 +1,7 @@
 package app
 
 import (
+	"fmt"
 	"log"
 	"time"
 
@@ -9,7 +10,7 @@ import (
 	tb "gopkg.in/telebot.v3"
 )
 
-func calendar(update *tgbotapi.Update) {
+func OutputCalendar(update *tgbotapi.Update) {
 	b, err := tb.NewBot(tb.Settings{
 		Token:  "6635332877:AAE_EA1Rvlfw6sLLJxfhIyRrDTtmyd20PG8",
 		Poller: &tb.LongPoller{Timeout: 10 * time.Second},
@@ -31,8 +32,7 @@ func calendar(update *tgbotapi.Update) {
 		if err != nil {
 			return err
 		}
-		msg := tgbotapi.NewMessage(update.Message.Chat.ID, date.String())
-		BotaZamena.Send(msg)
+		fmt.Println(date)
 
 		c.Respond()
 		return nil

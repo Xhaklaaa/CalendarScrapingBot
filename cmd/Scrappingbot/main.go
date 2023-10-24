@@ -1,6 +1,8 @@
 package main
 
 import (
+	"app"
+	constans "constants"
 	"log"
 	"os"
 	"time"
@@ -21,8 +23,8 @@ func CallbackQuerybot(update *tgbotapi.Update) bool {
 }
 
 func init() {
-	_ = os.Setenv(TOKEN_NAME, "6635332877:AAE_EA1Rvlfw6sLLJxfhIyRrDTtmyd20PG8")
-	Token = os.Getenv(TOKEN_NAME)
+	_ = os.Setenv(constans.TokenName, "6635332877:AAE_EA1Rvlfw6sLLJxfhIyRrDTtmyd20PG8")
+	Token = os.Getenv(constans.TokenName)
 
 	var err error
 	if BotaZamena, err = tgbotapi.NewBotAPI(Token); err != nil {
@@ -43,7 +45,7 @@ func main() {
 	log.Printf("Authorized on account %s", BotaZamena.Self.UserName)
 
 	update_config := tgbotapi.NewUpdate(0)
-	update_config.Timeout = UPDATE_CONFIG_TIMEOUT
+	update_config.Timeout = constans.UpdateConfigTimeout
 
 	updates := BotaZamena.GetUpdatesChan(update_config)
 
@@ -56,7 +58,7 @@ func main() {
 
 			msg := tgbotapi.NewMessage(update.Message.Chat.ID, "Привет, я полезный телеграм бот! Что бы выбрать дату введите '/calendar'")
 			BotaZamena.Send(msg)
-			calendar(&update)
+			app.OutputCalendar(&update)
 		}
 	}
 }
